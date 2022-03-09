@@ -1,6 +1,5 @@
-let total = 0;
-
 window.onload = function() {
+    load();
     document.getElementById(`add`).addEventListener(`click`, (event)=>{
         event.preventDefault();
         add();
@@ -11,23 +10,46 @@ function get(id){
     return document.getElementById(id).value;
 }
 
-function add(){
-    if(get(`name`) == ``) return alert(`Please enter a name`);
-    if(parseInt(get(`rate`)).toString() == "NaN") return alert(`Please enter a valid number`);
-    if(parseInt(get(`quantity`)).toString() == "NaN") return alert(`Please enter a valid number`);
-    let itemSrNo = document.getElementById(`list`).childElementCount;
-    let itemName = get(`name`);
-    let itemRate = get(`rate`);
-    let itemQuantity = get(`quantity`);
-    let itemTotal = get(`rate`)*get(`quantity`)
-    let element = `<tr>
-        <td>${itemSrNo}</td>
-        <td>${itemName}</td>
-        <td>${itemRate}</td>
-        <td>${itemQuantity}</td>
-        <td>${itemTotal}</td>
-    </tr>`
-    $("#list").append(element);
-    total += get(`rate`)*get(`quantity`);
+function load(){
+    let total = 0;
+    let srNo = 1;
+    let allItems = JSON.parse(localStorage.getItem(`items`)) || [];
+    allItems.forEach(item => {
+        let itemName = item.name;
+        let itemRate = parseInt(item.rate);
+        let itemQuantity = parseInt(item.quantity);
+        let itemTotal = itemRate * itemQuantity;
+        let element = `<tr>
+            <td>${srNo}</td>
+            <td>${itemName}</td>
+            <td>${itemRate}</td>
+            <td>${itemQuantity}</td>
+            <td>${itemTotal}</td>
+        </tr>`
+        $("#list").append(element);
+        total += itemTotal;
+        srNo++;
+    });
     $("#total").text(total);
+}
+
+function add(){
+    $("#list").empty();
+    $("#list").append(`        <tr><th colspan="5">Shopping List</th></tr>
+    <tr>
+        <th>Sr No.</th>
+        <th>Name</th>
+        <th>Rate</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>`)
+    let item = {
+        name: get(`name`),
+        rate: get(`rate`),
+        quantity: get(`quantity`)
+    }
+    let allItems = JSON.parse(localStorage.getItem(`items`)) || [];
+    allItems.push(item);
+    localStorage.setItem(`items`, JSON.stringify(allItems));
+    load();
 }
