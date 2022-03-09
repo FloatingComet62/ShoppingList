@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="title">
+        Shopping List
+    </div>
+    <div class="additem">
+        Add Item
+    </div>
+    <form>
+        Name: <input type="text" id="name"><br>
+        Rate: <input type="text" id="rate"><br>
+        Quantity: <input type="text" id="quantity"><br><br>
+
+        <button id="add">Add</button>
+    </form>
+    <table align="center" id="list">
+
+        <tr><th colspan="5">Shopping List</th></tr>
+        <tr>
+            <th>Sr No.</th>
+            <th>Name</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </table>
+    <br>
+    <div class="total" id="total">
+        Total Price: 0
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

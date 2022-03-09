@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(48, 48, 48);
+    color: rgb(199, 199, 199);
+    font-family: 'Courier New', Courier, monospace;
+}
+table, tr, th, td{
+    border: 1px solid rgb(175, 108, 44);
+}
+th{
+    font-size: 3rem;
+}
+td{
+    font-size: 2rem;
+}
+td, th{
+    padding: 2rem;
+}
+form{
+    text-align: center;
+    font-size: 2rem;
+}
+.title{
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.additem{
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+input{
+    border-radius: 1rem;
+    text-align: center;
+    border: none;
+    background-color: rgb(70, 70, 70);
+    height: 1.5rem;
+    color: rgb(199, 199, 199);
+    font-size: 1rem;
+}
+button{
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: large;
+    border-radius: 5rem;
+    background-color: rgb(38, 190, 38);
+    border: none;
+    margin-bottom: 2rem;
+}
+.total{
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+}
