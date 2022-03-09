@@ -55,3 +55,7 @@ button{
     margin-top: 2rem;
     font-size: 2rem;
 }
+.remove{
+    background-color: rgb(190, 38, 38);
+    color: rgb(199, 199, 199);
+}

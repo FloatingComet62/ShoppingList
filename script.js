@@ -35,7 +35,7 @@ function load(){
             <td>${itemRate}</td>
             <td>${itemQuantity}</td>
             <td>${itemTotal}</td>
-            <td><button class="btn btn-danger" onclick="remove(${srNo})">Remove</button></td>
+            <td><button class="remove" onclick="remove(${srNo})">Remove</button></td>
         </tr>`
         $("#list").append(element);
         total += itemTotal;
@@ -54,6 +54,9 @@ function add(){
     allItems.push(item);
     localStorage.setItem(`items`, JSON.stringify(allItems));
     load();
+    $("#name").val(``);
+    $("#rate").val(``);
+    $("#quantity").val(``);
 }
 
 function remove(srNo){
