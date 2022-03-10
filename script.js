@@ -11,6 +11,16 @@ function get(id){
 }
 
 function load(){
+    $("#list").empty();
+    $("#list").append(`        <tr><th colspan="5">Shopping List</th></tr>
+    <tr>
+        <th>Sr No.</th>
+        <th>Name</th>
+        <th>Rate</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Options</th>
+    </tr>`)
     let total = 0;
     let srNo = 1;
     let allItems = JSON.parse(localStorage.getItem(`items`)) || [];
@@ -25,6 +35,7 @@ function load(){
             <td>${itemRate}</td>
             <td>${itemQuantity}</td>
             <td>${itemTotal}</td>
+            <td><button class="remove" onclick="remove(${srNo})">Remove</button></td>
         </tr>`
         $("#list").append(element);
         total += itemTotal;
@@ -34,15 +45,6 @@ function load(){
 }
 
 function add(){
-    $("#list").empty();
-    $("#list").append(`        <tr><th colspan="5">Shopping List</th></tr>
-    <tr>
-        <th>Sr No.</th>
-        <th>Name</th>
-        <th>Rate</th>
-        <th>Quantity</th>
-        <th>Total</th>
-    </tr>`)
     let item = {
         name: get(`name`),
         rate: get(`rate`),
@@ -50,6 +52,16 @@ function add(){
     }
     let allItems = JSON.parse(localStorage.getItem(`items`)) || [];
     allItems.push(item);
+    localStorage.setItem(`items`, JSON.stringify(allItems));
+    load();
+    $("#name").val(``);
+    $("#rate").val(``);
+    $("#quantity").val(``);
+}
+
+function remove(srNo){
+    let allItems = JSON.parse(localStorage.getItem(`items`)) || [];
+    allItems.splice(srNo - 1, 1);
     localStorage.setItem(`items`, JSON.stringify(allItems));
     load();
 }
